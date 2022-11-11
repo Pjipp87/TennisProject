@@ -1,6 +1,12 @@
 package classes;
 
-
+/**
+ * Match Class for the WBS Tennis Project
+ * This is where the magic happens
+ * @author pascaljipp
+ *
+ * @version 1.0
+ */
 public class Match {
     private final Team teamA;
     private final Team teamB;
