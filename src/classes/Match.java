@@ -90,7 +90,7 @@ public class Match {
      * Starts a match between two Opponents.
      * Uses Random() integers between 0 - 99 to get a winner of the set.
      * If one of the players got 6 points, he gets a Match point.
-     * If one of the players got 3 Match points, he is th Winner
+     * If one of the players got 3 Match points, he is the Winner
      * The loser would be removed from the team
      *
      * @param actualOpponents  ArrayList of two Player Objects
