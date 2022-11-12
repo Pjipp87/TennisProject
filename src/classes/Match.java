@@ -60,8 +60,8 @@ public class Match {
     public ArrayList<Player> setOpponents(Team teamA, Team teamB){
         ArrayList<Player> opponents = new ArrayList<>();
         Random rand = new Random();
-        int randNumA = rand.nextInt(0,teamA.getPlayerList().size()-1);
-        int randNumB = rand.nextInt(0, teamB.getPlayerList().size()-1);
+        int randNumA = rand.nextInt(teamA.getPlayerList().size()-1);
+        int randNumB = rand.nextInt(teamB.getPlayerList().size()-1);
         opponents.add(teamA.getPlayer(randNumA));
         opponents.add(teamB.getPlayer(randNumB));
         System.out.println("Die beiden nächsten Spieler: " + opponents.get(0).getFirstName() +" " +opponents.get(0).getLastName() + " - " +opponents.get(1).getFirstName()+" "+opponents.get(1).getLastName());
@@ -75,11 +75,17 @@ public class Match {
      */
     public void startChampionship(){
         System.out.println("Tunier startet");
-        ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
-        System.out.println("Tunier ist beendet");
+
+
         // Aufruf eines Sets
-        startSet(actualOpponents);
-        System.out.println(teamA.getTeamName());
+        while (teamA.getPlayerList().size() != 0 && teamB.getPlayerList().size() != 0){
+            ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
+            startSet(actualOpponents);
+
+        }
+        System.out.println("Tunier ist beendet");
+        System.out.println("Der Gewinner ist:");
+        System.out.println(teamA.getPlayerList().size() == 0 ? teamA.getTeamName() : teamB.getTeamName());
     }
 
     /**
@@ -106,6 +112,7 @@ public class Match {
                     System.out.println();
                     if (p1.getMatchPoints() == 3){
                         teamB.removePlayer(p2);
+                        p1.setMatchPoints(0);
                         break;
                     }
                     p1.setPoints(0);
@@ -117,6 +124,7 @@ public class Match {
                     System.out.println();
                     if (p2.getMatchPoints() == 3){
                         teamA.removePlayer(p1);
+                        p2.setMatchPoints(0);
                         break;
                     }
                     p2.setPoints(0);
