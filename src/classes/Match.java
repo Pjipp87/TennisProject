@@ -75,7 +75,8 @@ public class Match {
         System.out.println("Tunier startet");
 /*        ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
         startSet(actualOpponents);*/
-
+        teamA.printTeam();
+        teamB.printTeam();
        while (teamA.getPlayerList().size() != 0 && teamB.getPlayerList().size() != 0){
             ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
             startSet(actualOpponents);
