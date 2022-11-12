@@ -55,8 +55,6 @@ public class Match {
      * @param teamB second team to get a Player
      * @return a pair of two random Player
      */
-
-    // Zugriff änder auf Objekt-Attribute und nicht mehr über Parameter
     public ArrayList<Player> setOpponents(Team teamA, Team teamB){
         ArrayList<Player> opponents = new ArrayList<>();
         Random rand = new Random();
@@ -75,14 +73,14 @@ public class Match {
      */
     public void startChampionship(){
         System.out.println("Tunier startet");
+        ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
+        startSet(actualOpponents);
 
-
-        // Aufruf eines Sets
-        while (teamA.getPlayerList().size() != 0 && teamB.getPlayerList().size() != 0){
+/*        while (teamA.getPlayerList().size() != 0 && teamB.getPlayerList().size() != 0){
             ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
             startSet(actualOpponents);
 
-        }
+        }*/
         System.out.println("Tunier ist beendet");
         System.out.println("Der Gewinner ist:");
         System.out.println(teamA.getPlayerList().size() == 0 ? teamA.getTeamName() : teamB.getTeamName());
@@ -102,12 +100,16 @@ public class Match {
         Player p1 = actualOpponents.get(0);
         Player p2 = actualOpponents.get(1);
         System.out.println(p1.getFirstName()+" "+p1.getLastName()+"\t-\t"+p2.getFirstName()+" "+p2.getLastName());
-        while (true){
+        while (p1.getMatchPoints() <= 3 && p2.getMatchPoints() <= 3){
             int randA = rand.nextInt(100);
             int randB = rand.nextInt(100);
+
             if (randA <= randB){
+
                 p1.setPoints(p1.getPoints()+1);
                 if (p1.getPoints() == 6){
+                    p1.setPoints(0);
+                    p2.setPoints(0);
                     p1.setMatchPoints(p1.getMatchPoints()+1);
                     System.out.println();
                     if (p1.getMatchPoints() == 3){
@@ -115,11 +117,13 @@ public class Match {
                         p1.setMatchPoints(0);
                         break;
                     }
-                    p1.setPoints(0);
+
                 }
             } else {
                 p2.setPoints(p2.getPoints()+1);
-                if (p2.getPoints() == 7){
+                if (p2.getPoints() == 6){
+                    p2.setPoints(0);
+                    p1.setPoints(0);
                     p2.setMatchPoints(p2.getMatchPoints()+1);
                     System.out.println();
                     if (p2.getMatchPoints() == 3){
@@ -127,10 +131,10 @@ public class Match {
                         p2.setMatchPoints(0);
                         break;
                     }
-                    p2.setPoints(0);
+
                 }
             }
-            System.out.println("\t"+(p1.getPoints()+1)+"\t\t\t-\t\t"+(p2.getPoints()+1));
+            System.out.println("\t"+(p1.getPoints())+"\t\t\t-\t\t"+(p2.getPoints()));
         }
 
     }
