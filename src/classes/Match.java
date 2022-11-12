@@ -59,6 +59,13 @@ public class Match {
         // In der Plyer Klasse ein Attribut "hasPlayed" anlegen. Wenn der Spieler schon ein Spiel gespielt hat, darf er nicht noch
         // mal spielen,
         // Abfangen, das eine erneute Auslosung zweier Kontrahenten stattfindet, nachdem alle Spieler aus einem Team entfernt wurden.
+
+        // Exception in thread "main" java.lang.IllegalArgumentException: bound must be positive
+        // at java.base/java.util.Random.nextInt(Random.java:557)
+        // at classes.Match.setOpponents(Match.java:62)
+        // at classes.Match.startChampionship(Match.java:80)
+        // at Main.main(Main.java:22)
+
         ArrayList<Player> opponents = new ArrayList<>();
         Random rand = new Random();
         int randNumA = rand.nextInt(teamA.getPlayerList().size()-1);
