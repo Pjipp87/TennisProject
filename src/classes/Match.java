@@ -13,6 +13,7 @@ import java.util.Random;
 public class Match {
     private final Team teamA;
     private final Team teamB;
+    private Team winnerTeam;
 
 
     /**
@@ -26,12 +27,12 @@ public class Match {
         this.teamA = teamA;
         this.teamB = teamB;
         if (teamA.getPlayerList().size() == 0){
-            System.out.println(this.teamA.teamName+" hat keine Spieler");
+            System.out.println(this.teamA.getTeamName()+" hat keine Spieler");
         } else if (teamB.getPlayerList().size() == 0) {
-            System.out.println(this.teamB.teamName+" hat keine Spieler");
+            System.out.println(this.teamB.getTeamName()+" hat keine Spieler");
         } else {
 
-            System.out.println("Willkommen zum heutigen Turnier zwischen " + this.teamA.teamName +" und "+this.teamB.teamName+"!");
+            System.out.println("Willkommen zum heutigen Turnier zwischen " + this.teamA.getTeamName() +" und "+this.teamB.getTeamName()+"!");
         }
 
     }
@@ -54,15 +55,25 @@ public class Match {
      * @param teamB second team to get a Player
      * @return a pair of two random Player
      */
-    public ArrayList<Player> setOpponents(ArrayList<Player> teamA, ArrayList<Player> teamB){
+    public ArrayList<Player> setOpponents(Team teamA, Team teamB){
         ArrayList<Player> opponents = new ArrayList<>();
         Random rand = new Random();
-        int randNumA = rand.nextInt(0,teamA.size()-1);
-        int randNumB = rand.nextInt(0, teamB.size()-1);
-        opponents.add(teamA.get(randNumA));
-        opponents.add(teamB.get(randNumB));
+        int randNumA = rand.nextInt(0,teamA.getPlayerList().size()-1);
+        int randNumB = rand.nextInt(0, teamB.getPlayerList().size()-1);
+        opponents.add(teamA.getPlayer(randNumA));
+        opponents.add(teamB.getPlayer(randNumB));
         System.out.println("Die beiden nächsten Spieler: " + opponents.get(0).getFirstName() +" " +opponents.get(0).getLastName() + " - " +opponents.get(1).getFirstName()+" "+opponents.get(1).getLastName());
         return opponents;
 
+    }
+
+// JavaDoc
+    public void runChampionship(Team teamA, Team teamB){
+        System.out.println("Tunier startet");
+        ArrayList<Player> actualOpponents = setOpponents(teamA, teamB);
+        System.out.println("Tunier ist beendet");
+        // Aufruf eines Sets
+
+        System.out.println(teamA.getTeamName());
     }
 }

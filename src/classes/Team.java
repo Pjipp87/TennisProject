@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Team {
-    String teamName;
+    private final String teamName;
     ArrayList<Player> list;
 
 
@@ -32,6 +32,13 @@ public class Team {
 //      System.out.println(p.getFirstName() +" " +p.getLastName() +" wurde in " +this.teamName +" aufgenommen!");
     }
 
+    /**
+     * Returns the name of the actual Team Objekt
+     * @return String teamName
+     */
+    public String getTeamName() {
+        return teamName;
+    }
 
     /**
      * Prints the Team members of the specific Team

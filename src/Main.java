@@ -19,7 +19,7 @@ public class Main {
         team2.addToTeam(new Player("Annemarie", "Bienemann"));
 
         Match tennisMatch = new Match(team1, team2);
-
+        tennisMatch.runChampionship(team1, team2);
 
 
 
