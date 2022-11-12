@@ -68,4 +68,8 @@ public class Team {
     public Player getPlayer(int index){
         return this.list.get(index);
     }
+
+    public void removePlayer(Player player){
+        this.list.remove(player);
+    }
 }

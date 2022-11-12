@@ -69,13 +69,61 @@ public class Match {
 
     }
 
-// JavaDoc
-    public void runChampionship(Team teamA, Team teamB){
+
+    /**
+     * Starts the Championship
+     */
+    public void startChampionship(){
         System.out.println("Tunier startet");
-        ArrayList<Player> actualOpponents = setOpponents(teamA, teamB);
+        ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
         System.out.println("Tunier ist beendet");
         // Aufruf eines Sets
-
+        startSet(actualOpponents);
         System.out.println(teamA.getTeamName());
     }
+
+    /**
+     * Starts a match between two Opponents.
+     * Uses Random() integers between 0 - 99 to get a winner of the set.
+     * If one of the players got 6 points, he gets a Match point.
+     * If one of the players got 3 Match points, he is th Winner
+     * The loser would be removed from the team
+     * @param actualOpponents  ArrayList of two Player Objects
+     */
+    private void startSet(ArrayList<Player> actualOpponents){
+        Random rand = new Random();
+        Player p1 = actualOpponents.get(0);
+        Player p2 = actualOpponents.get(1);
+        System.out.println(p1.getFirstName()+" "+p1.getLastName()+"\t-\t"+p2.getFirstName()+" "+p2.getLastName());
+        while (true){
+            int randA = rand.nextInt(100);
+            int randB = rand.nextInt(100);
+            if (randA <= randB){
+                p1.setPoints(p1.getPoints()+1);
+                if (p1.getPoints() == 6){
+                    p1.setMatchPoints(p1.getMatchPoints()+1);
+                    System.out.println();
+                    if (p1.getMatchPoints() == 3){
+                        teamB.removePlayer(p2);
+                        break;
+                    }
+                    p1.setPoints(0);
+                }
+            } else {
+                p2.setPoints(p2.getPoints()+1);
+                if (p2.getPoints() == 7){
+                    p2.setMatchPoints(p2.getMatchPoints()+1);
+                    System.out.println();
+                    if (p2.getMatchPoints() == 3){
+                        teamA.removePlayer(p1);
+                        break;
+                    }
+                    p2.setPoints(0);
+                }
+            }
+            System.out.println("\t"+(p1.getPoints()+1)+"\t\t\t-\t\t"+(p2.getPoints()+1));
+        }
+
+    }
+
 }
