@@ -55,6 +55,8 @@ public class Match {
      * @param teamB second team to get a Player
      * @return a pair of two random Player
      */
+
+    // Zugriff änder auf Objekt-Attribute und nicht mehr über Parameter
     public ArrayList<Player> setOpponents(Team teamA, Team teamB){
         ArrayList<Player> opponents = new ArrayList<>();
         Random rand = new Random();
