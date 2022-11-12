@@ -57,7 +57,7 @@ public class Match {
      */
     public ArrayList<Player> setOpponents(Team teamA, Team teamB){
         // In der Plyer Klasse ein Attribut "hasPlayed" anlegen. Wenn der Spieler schon ein Spiel gespielt hat, darf er nicht noch
-        // mal spielen,
+        // mal spielen.
         // Abfangen, das eine erneute Auslosung zweier Kontrahenten stattfindet, nachdem alle Spieler aus einem Team entfernt wurden.
 
         // Exception in thread "main" java.lang.IllegalArgumentException: bound must be positive
