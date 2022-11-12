@@ -56,20 +56,10 @@ public class Match {
      * @return a pair of two random Player
      */
     public ArrayList<Player> setOpponents(Team teamA, Team teamB){
-        // In der Plyer Klasse ein Attribut "hasPlayed" anlegen. Wenn der Spieler schon ein Spiel gespielt hat, darf er nicht noch
-        // mal spielen.
-        // Abfangen, das eine erneute Auslosung zweier Kontrahenten stattfindet, nachdem alle Spieler aus einem Team entfernt wurden.
-
-        // Exception in thread "main" java.lang.IllegalArgumentException: bound must be positive
-        // at java.base/java.util.Random.nextInt(Random.java:557)
-        // at classes.Match.setOpponents(Match.java:72)
-        // at classes.Match.startChampionship(Match.java:90)
-        // at Main.main(Main.java:22)
-
         ArrayList<Player> opponents = new ArrayList<>();
         Random rand = new Random();
-        int randNumA = rand.nextInt(teamA.getPlayerList().size()-1);
-        int randNumB = rand.nextInt(teamB.getPlayerList().size()-1);
+        int randNumA = rand.nextInt(teamA.getPlayerList().size());
+        int randNumB = rand.nextInt(teamB.getPlayerList().size());
         opponents.add(teamA.getPlayer(randNumA));
         opponents.add(teamB.getPlayer(randNumB));
         System.out.println("Die beiden nächsten Spieler: " + opponents.get(0).getFirstName() +" " +opponents.get(0).getLastName() + " - " +opponents.get(1).getFirstName()+" "+opponents.get(1).getLastName());
