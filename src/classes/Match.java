@@ -56,6 +56,9 @@ public class Match {
      * @return a pair of two random Player
      */
     public ArrayList<Player> setOpponents(Team teamA, Team teamB){
+        // In der Plyer Klasse ein Attribut "hasPlayed" anlegen. Wenn der Spieler schon ein Spiel gespielt hat, darf er nicht noch
+        // mal spielen,
+        // Abfangen, das eine erneute Auslosung zweier Kontrahenten stattfindet, nachdem alle Spieler aus einem Team entfernt wurden.
         ArrayList<Player> opponents = new ArrayList<>();
         Random rand = new Random();
         int randNumA = rand.nextInt(teamA.getPlayerList().size()-1);
@@ -73,14 +76,14 @@ public class Match {
      */
     public void startChampionship(){
         System.out.println("Tunier startet");
-        ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
-        startSet(actualOpponents);
+/*        ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
+        startSet(actualOpponents);*/
 
-/*        while (teamA.getPlayerList().size() != 0 && teamB.getPlayerList().size() != 0){
+       while (teamA.getPlayerList().size() != 0 && teamB.getPlayerList().size() != 0){
             ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
             startSet(actualOpponents);
 
-        }*/
+        }
         System.out.println("Tunier ist beendet");
         System.out.println("Der Gewinner ist:");
         System.out.println(teamA.getPlayerList().size() == 0 ? teamA.getTeamName() : teamB.getTeamName());
