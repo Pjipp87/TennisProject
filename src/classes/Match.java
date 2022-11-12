@@ -62,8 +62,8 @@ public class Match {
 
         // Exception in thread "main" java.lang.IllegalArgumentException: bound must be positive
         // at java.base/java.util.Random.nextInt(Random.java:557)
-        // at classes.Match.setOpponents(Match.java:62)
-        // at classes.Match.startChampionship(Match.java:80)
+        // at classes.Match.setOpponents(Match.java:72)
+        // at classes.Match.startChampionship(Match.java:90)
         // at Main.main(Main.java:22)
 
         ArrayList<Player> opponents = new ArrayList<>();
