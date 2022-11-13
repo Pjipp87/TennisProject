@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Team {
     private final String teamName;
     ArrayList<Player> list;
+    private final ArrayList<Player> winnerlist;
 
 
     /**
@@ -21,6 +22,7 @@ public class Team {
     public Team(String teamName){
         this.teamName = teamName;
         this.list = new ArrayList<>();
+        this.winnerlist = new ArrayList<>();
     }
 
     /**
@@ -29,7 +31,6 @@ public class Team {
      */
     public void addToTeam(Player p){
         this.list.add(p);
-//      System.out.println(p.getFirstName() +" " +p.getLastName() +" wurde in " +this.teamName +" aufgenommen!");
     }
 
     /**
@@ -49,6 +50,7 @@ public class Team {
         for (Player p: this.list) {
             System.out.println(p.getFirstName() +" "+p.getLastName());
         }
+        System.out.println();
     }
 
 
@@ -58,6 +60,34 @@ public class Team {
      */
     public ArrayList<Player> getPlayerList(){
         return this.list;
+    }
+
+
+    /**
+     * Returns the winner list
+     * @return the winner list
+     */
+    public ArrayList<Player> getWinnerlist() {
+        return winnerlist;
+    }
+
+
+    /**
+     * Adds a Player-Object to the winner List
+     * @param p a Player Object to add
+     */
+    public void addPlayerToWinnerlist(Player p) {
+        this.winnerlist.add(p);
+    }
+
+    /**
+     * Prints a list of all winners of the team to the console
+     */
+    public void printWinnerList(){
+        for (Player p: this.winnerlist) {
+            System.out.println(p.getFirstName() +" "+p.getLastName());
+        }
+        System.out.println();
     }
 
     /**

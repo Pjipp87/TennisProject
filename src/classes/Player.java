@@ -11,6 +11,7 @@ public class Player {
     private final String lastName;
     private int points = 0;
     private int matchPoints = 0;
+    private boolean played = false;
 
 
 
@@ -47,4 +48,10 @@ public class Player {
     public void setMatchPoints(int matchPoints) {
         this.matchPoints = matchPoints;
     }
+
+    public boolean hasplayed(){ return played; };
+
+    public void setPlayed(boolean played) { this.played = played; };
+
+
 }

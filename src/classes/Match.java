@@ -16,6 +16,7 @@ public class Match {
     private Team winnerTeam;
 
 
+
     /**
      * Constructor to create a Match-Object.
      * Checks if both teams contain Player-Objects.
@@ -62,6 +63,7 @@ public class Match {
         int randNumB = rand.nextInt(teamB.getPlayerList().size());
         opponents.add(teamA.getPlayer(randNumA));
         opponents.add(teamB.getPlayer(randNumB));
+
         System.out.println("Die beiden nächsten Spieler: " + opponents.get(0).getFirstName() +" " +opponents.get(0).getLastName() + " - " +opponents.get(1).getFirstName()+" "+opponents.get(1).getLastName());
         return opponents;
 
@@ -73,18 +75,22 @@ public class Match {
      */
     public void startChampionship(){
         System.out.println("Tunier startet");
-/*        ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
-        startSet(actualOpponents);*/
         teamA.printTeam();
+
         teamB.printTeam();
+
        while (teamA.getPlayerList().size() != 0 && teamB.getPlayerList().size() != 0){
             ArrayList<Player> actualOpponents = setOpponents(this.teamA, this.teamB);
             startSet(actualOpponents);
-
         }
         System.out.println("Tunier ist beendet");
         System.out.println("Der Gewinner ist:");
-        System.out.println(teamA.getPlayerList().size() == 0 ? teamA.getTeamName() : teamB.getTeamName());
+        if (teamA.getPlayerList().size() == 0){
+            System.out.println(teamB.getTeamName());
+        } else if(teamB.getPlayerList().size() == 0){
+            System.out.println(teamA.getTeamName());
+        }
+
     }
 
     /**
@@ -115,6 +121,10 @@ public class Match {
                     System.out.println();
                     if (p1.getMatchPoints() == 3){
                         teamB.removePlayer(p2);
+                        System.out.println(p2.getFirstName()+" "+p2.getLastName()+ " hat verloren");
+                        //p1.setPlayed(true);
+                        //teamA.addPlayerToWinnerlist(p1);
+                        //teamA.removePlayer(p1);
                         p1.setMatchPoints(0);
                         break;
                     }
@@ -129,6 +139,10 @@ public class Match {
                     System.out.println();
                     if (p2.getMatchPoints() == 3){
                         teamA.removePlayer(p1);
+                        System.out.println(p1.getFirstName()+" "+p1.getLastName()+ " hat verloren");
+                        //p2.setPlayed(true);
+                        //teamB.addPlayerToWinnerlist(p2);
+                        //teamB.removePlayer(p2);
                         p2.setMatchPoints(0);
                         break;
                     }
